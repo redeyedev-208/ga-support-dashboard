@@ -8,7 +8,7 @@ export default function LandingPage() {
       <h1 className='flex gap-2 items-center'>
         <PersonStandingIcon
           size={50}
-          className='text-purple-500'
+          className='text-indigo-500'
         />
         Support Dashboard
       </h1>
