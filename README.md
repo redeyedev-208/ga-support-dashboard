@@ -1,37 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## NextJS Dashboard with Login/Signup workflow
+This is all UI based no backend but I will add that after this is complete for completeness. 
+For this project we are using NextJS with TypeScript, ShadCn and TailwindCSS. 
+I've been tinkering around with ShadCn and must admit I'm really liking it. 
 
-## Getting Started
+Straight to the point no nonsense stuff, along with NextJS and the use of Server Side Components make this a really amazing workflow. 
+Some of the benefits that come to mind are:
+- Improved Performance and SEO
+- Better Data Fetching Capabilities
+- Enhanced Security
+- Simplified Development Workflow
+- Better Developer Experience
+- Scalability
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This is just placeholder for now as I'll update this README when I'm done. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+___
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Images of the Login in Light and Dark Mode
+This is what the Login page will look like for both Light and Dark mode. 
+What is even better though no matter how cool a layout may look is if it is accessible. 
+Common problem today with many Designers is that they often forget or don't even know about accessibility. 
+With a few days of training they can learn to implement accessibility early on in a project. 
+Even at the most basic level this is still better than having no knowledge. Design is the first line of
+defense from putting out workflows that just are a horrible experience. 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Due to how browsers interact differently, the limitations in how the workflows are tested and how the ease of use is perceived.
+At the end of the day the benefits are that you make your products available to everyone, to create a truly inclusive workflow. 
 
-## Learn More
+Ultimately no one ever wants to have a lawsuit against them but it does happen. When these lawsuits are encountered they often
+are just asking for the needed fixes. Yet there are examples where companies offer up services that don't do what they say they do. 
 
-To learn more about Next.js, take a look at the following resources:
+A great rule of thumb being that if any organization or small to medium sized company sells accessibility solutions. 
+Run an accessibility audit on there site, and it it doesn't look like the images attached after the listed link. 
+You must ask yourself what is really going on here. 
+Here is the plugin I used to scan any site and also how I test when building out UI's.
+- [axe DevTools - Web Accessibility Testing](https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?utm_source=deque.com&utm_medium=referral&utm_campaign=axe_hero)
+- [Accessibe Class Action Lawsuit](https://www.lflegal.com/2024/07/accessibe-class-action/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Images of Login passing with 0 Issues
+<b>Light Mode</b>
+![light-mode-login-page](https://github.com/user-attachments/assets/ac9d143c-d702-4433-bfe5-8e3b85659799)
 
-## Deploy on Vercel
+<b>Dark Mode</b>
+![light-mode-login-page](https://github.com/user-attachments/assets/08b9682e-1cf5-4df3-985c-eef0ae04ca48)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# ga-support-dashboard
