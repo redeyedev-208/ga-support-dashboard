@@ -9,10 +9,41 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { PersonStandingIcon } from 'lucide-react';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
+
+// Zod does all of the heavy lifting for validation cool stuff
+const formSchema = z.object({
+  email: z.string().email(),
+  password: z.string(),
+});
 
 export default function LoginPage() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
+  const handleSubmit = () => {
+    console.log('Logged in successful, after validation was successful');
+  };
+
   return (
     <>
       <h1 className='sr-only'>Heading One for accessibility</h1>{' '}
@@ -27,7 +58,60 @@ export default function LoginPage() {
             Login to your Support Dashboard Account
           </CardDescription>
         </CardHeader>
-        <CardContent>Login form</CardContent>
+        <CardContent>
+          <Form {...form}>
+            <form
+              className='flex flex-col gap-6'
+              onSubmit={form.handleSubmit(handleSubmit)}
+            >
+              {/* This uses React context this is pretty slick I must admit */}
+              <FormField
+                control={form.control}
+                name='email'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder='coffeelover@coffee.com'
+                        // Comment out the type and type the validation color contrast
+                        // You will see that the color for the light mode passes the accessibility color contrast requirement
+                        // In dark mode though this is not the case so change the color in the globals.css file until it passes
+                        type='email'
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormDescription>
+                      Email address you signed up with
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name='password'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder='Password'
+                        // Comment out the type and type the validation color contrast
+                        // You will see that the color for the light mode passes the accessibility color contrast requirement
+                        // In dark mode though this is not the case so change the color in the globals.css file until it passes
+                        type='password'
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type='submit'>Login</Button>
+            </form>
+          </Form>
+        </CardContent>
         <CardFooter className='justify-between'>
           <small>Don't have an account?</small>
           <Button
