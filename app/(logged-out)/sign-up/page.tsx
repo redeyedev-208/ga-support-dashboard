@@ -25,18 +25,15 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
-// Zod does all of the heavy lifting for validation cool stuff
 const formSchema = z.object({
   email: z.string().email(),
-  password: z.string(),
 });
 
-export default function LoginPage() {
+export default function SignupPage() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: '',
-      password: '',
     },
   });
 
@@ -53,9 +50,9 @@ export default function LoginPage() {
       <PersonStandingIcon size={50} />
       <Card className='w-full max-w-sm'>
         <CardHeader>
-          <CardTitle>Login</CardTitle>
+          <CardTitle>Sign up</CardTitle>
           <CardDescription>
-            Login to your Support Dashboard Account
+            Sign up for a new Support Dashboard account
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -81,45 +78,24 @@ export default function LoginPage() {
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>
-                      Email address you signed up with
-                    </FormDescription>
+
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}            
-                name='password'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder='Password'
-                        // Comment out the type and type the validation color contrast
-                        // You will see that the color for the light mode passes the accessibility color contrast requirement
-                        // In dark mode though this is not the case so change the color in the globals.css file until it passes
-                        type='password'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type='submit'>Login</Button>
+
+              <Button type='submit'>Sign up</Button>
             </form>
           </Form>
         </CardContent>
         <CardFooter className='justify-between'>
-          <small>Don't have an account?</small>
+          <small>Already have an account?</small>
           <Button
             asChild
             variant='outline'
             size='sm'
           >
-            <Link href='/sign-up'>Sign up</Link>
+            <Link href='/login'>Login</Link>
           </Button>
         </CardFooter>
       </Card>
