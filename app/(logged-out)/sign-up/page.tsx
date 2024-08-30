@@ -54,8 +54,23 @@ const formSchema = z
       );
       return date <= eighteenYearsAgo;
     }, 'You must be at least 18 years old.'),
+    password: z
+      .string()
+      .min(8, 'Password must contain at least 8 characters')
+      .refine((password) => {
+        // must contain at least 1 special character and 1 uppercase character
+        return /^(?=.*[!@#$%^&*])(?=.*[A-Z]).*$/.test(password);
+      }, 'Password must contain at least 1 special character and 1 uppercase letter'),
+    passwordConfirm: z.string(),
   })
   .superRefine((data, ctx) => {
+    if (data.password !== data.passwordConfirm) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['passwordConfirm'],
+        message: 'Passwords do not match',
+      });
+    }
     if (data.accountType === 'company' && !data.companyName) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
@@ -123,9 +138,6 @@ export default function SignupPage() {
                     <FormControl>
                       <Input
                         placeholder='coffeelover@coffee.com'
-                        // Comment out the type and type the validation color contrast
-                        // You will see that the color for the light mode passes the accessibility color contrast requirement
-                        // In dark mode though this is not the case so change the color in the globals.css file until it passes
                         type='email'
                         {...field}
                       />
@@ -234,6 +246,40 @@ export default function SignupPage() {
                           />
                         </PopoverContent>
                       </Popover>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name='password'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder='********'
+                        type='password'
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name='passwordConfirm'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Confirm password</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder='********'
+                        type='password'
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
