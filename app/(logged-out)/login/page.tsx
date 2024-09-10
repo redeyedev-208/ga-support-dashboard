@@ -19,6 +19,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { PasswordInput } from '@/components/ui/password-input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PersonStandingIcon } from 'lucide-react';
 import Link from 'next/link';
@@ -89,18 +90,17 @@ export default function LoginPage() {
                 )}
               />
               <FormField
-                control={form.control}            
+                control={form.control}
                 name='password'
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder='Password'
+                      <PasswordInput
+                        placeholder='********'
                         // Comment out the type and type the validation color contrast
                         // You will see that the color for the light mode passes the accessibility color contrast requirement
                         // In dark mode though this is not the case so change the color in the globals.css file until it passes
-                        type='password'
                         {...field}
                       />
                     </FormControl>
@@ -113,7 +113,7 @@ export default function LoginPage() {
           </Form>
         </CardContent>
         <CardFooter className='justify-between'>
-          <small>Don't have an account?</small>
+          <small>Don&apos;t have an account?</small>
           <Button
             asChild
             variant='outline'
