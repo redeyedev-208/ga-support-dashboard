@@ -17,7 +17,7 @@ export default function EmployeesStats() {
           </div>
           <div>
             <Button
-              size='sm'
+              size='xs'
               asChild
             >
               <Link href='/dashboard/employees'>View all</Link>
