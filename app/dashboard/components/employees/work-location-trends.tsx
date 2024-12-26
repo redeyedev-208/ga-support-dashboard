@@ -3,6 +3,7 @@
 import {
   Bar,
   BarChart,
+  Legend,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -15,7 +16,10 @@ export default function WorkLocationTrends() {
       height={350}
       width='100%'
     >
-      <BarChart data={data}>
+      <BarChart
+        data={data}
+        className='[&_.recharts-tooltip-cursor]:fill-zinc-200 dark:[&_.recharts-tooltip-cursor]:fill-zinc-800'
+      >
         <XAxis
           dataKey='name'
           stroke='#888888'
@@ -25,7 +29,28 @@ export default function WorkLocationTrends() {
           stroke='#888888'
           fontSize={12}
         />
-        <Tooltip />
+        <Tooltip
+          labelClassName='font-bold'
+          separator=': '
+          wrapperClassName='!text-sm dark:!bg-black rounded-md dark:!border-border'
+          formatter={(value, name) => {
+            if (name === 'wfh') {
+              return [value, 'Work from home'];
+            } else if (name === 'office') {
+              return [value, 'Work from office'];
+            }
+          }}
+        />
+        <Legend
+          iconType='circle'
+          formatter={(value) => {
+            if (value === 'wfh') {
+              return <div className='text-sm'>Work from home</div>;
+            } else if (value === 'office') {
+              return <div className='text-sm'>Work from office</div>;
+            }
+          }}
+        />
         <Bar
           dataKey='office'
           stackId={1}
