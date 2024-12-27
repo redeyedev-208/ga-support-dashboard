@@ -76,7 +76,7 @@ export default function EmployeesStats() {
               </span>
             )}
           </CardFooter>
-        </Card>
+        </Card>. 
         <Card className='border-purple-500 flex flex-col'>
           <CardHeader className='pb-2'>
             <CardTitle className='text-base'>Employee of the month</CardTitle>
