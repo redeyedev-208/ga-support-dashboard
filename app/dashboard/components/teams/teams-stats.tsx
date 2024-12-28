@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ListChecksIcon, Star, UsersIcon } from 'lucide-react';
+import { ListChecksIcon, PieChart, Star, UsersIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import cm from '@/public/images/cm.jpg';
@@ -12,6 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import TeamDistributionChart from '../../teams/team-distribution-chart';
 
 export default function TeamStats() {
   return (
@@ -74,9 +75,14 @@ export default function TeamStats() {
 
         <Card>
           <CardHeader className='pb-2'>
-            <CardTitle className='text-base'>Team distribution</CardTitle>
+            <CardTitle className='text-base flex justify-between'>
+              <span>Team distribution</span>
+              <PieChart />
+            </CardTitle>
           </CardHeader>
-          <CardContent className='flex gap-2 items-center'></CardContent>
+          <CardContent>
+            <TeamDistributionChart />
+          </CardContent>
         </Card>
       </div>
       {/* Bar Chart Code  */}
