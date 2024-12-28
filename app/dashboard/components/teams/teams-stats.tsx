@@ -13,6 +13,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import TeamDistributionChart from '../../teams/team-distribution-chart';
+import SupportTicketResolved from './support-tickets-resolved';
 
 export default function TeamStats() {
   return (
@@ -80,7 +81,7 @@ export default function TeamStats() {
               <PieChart />
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className='pb-0'>
             <TeamDistributionChart />
           </CardContent>
         </Card>
@@ -93,7 +94,9 @@ export default function TeamStats() {
             <span>Support tickets resolved</span>
           </CardTitle>
         </CardHeader>
-        <CardContent className='pl-0'>line graph</CardContent>
+        <CardContent className='pl-0'>
+          <SupportTicketResolved />
+        </CardContent>
       </Card>
     </>
   );

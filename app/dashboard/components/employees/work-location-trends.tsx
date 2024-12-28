@@ -30,8 +30,8 @@ export default function WorkLocationTrends() {
           fontSize={12}
         />
         <Tooltip
-          labelClassName='font-bold'
           separator=': '
+          labelClassName='font-bold'
           wrapperClassName='!text-sm dark:!bg-black rounded-md dark:!border-border'
           formatter={(value, name) => {
             if (name === 'wfh') {
