@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import MainMenu from './components/main-menu';
 import MenuTitle from './components/menu-title';
@@ -11,6 +12,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const isDesktop = useMediaQuery('(min-width: 768px)');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <div className='md:grid md:grid-cols-[250px_1fr] h-screen'>
       {isDesktop ? (
@@ -18,7 +20,12 @@ export default function DashboardLayout({
       ) : (
         <div className='p-4 flex justify-between md:hidden sticky top-0 left-0 bg-background border-b border-border'>
           <MenuTitle />
-          <Drawer direction='right'>
+          <Drawer
+            direction='right'
+            open={mobileMenuOpen}
+            onClose={() => setMobileMenuOpen(false)}
+            onOpenChange={(open) => setMobileMenuOpen(open)}
+          >
             <DrawerTrigger>
               <MenuIcon />
               <DrawerContent>

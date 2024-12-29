@@ -6,15 +6,18 @@ import { Drawer as DrawerPrimitive } from 'vaul';
 import { cn } from '@/lib/utils';
 
 // We are using this to have more control of the styling
-const DrawerContext = React.createContext<{
+export const DrawerContext = React.createContext<{
   direction?: 'top' | 'bottom' | 'left' | 'right';
+  onClose?: () => void;
 }>({});
 
 const Drawer = ({
   shouldScaleBackground = true,
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
-  <DrawerContext.Provider value={{ direction: props.direction }}>
+  <DrawerContext.Provider
+    value={{ direction: props.direction, onClose: props.onClose }}
+  >
     <DrawerPrimitive.Root
       shouldScaleBackground={shouldScaleBackground}
       {...props}
