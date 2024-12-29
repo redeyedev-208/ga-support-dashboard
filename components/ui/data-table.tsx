@@ -4,6 +4,7 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from '@tanstack/react-table';
 
@@ -15,6 +16,13 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { Button } from './button';
+import {
+  ChevronFirst,
+  ChevronLastIcon,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -29,10 +37,16 @@ export function DataTable<TData, TValue>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    initialState: {
+      pagination: {
+        pageSize: 5,
+      },
+    },
   });
 
   return (
-    <div className='rounded-md border'>
+    <div>
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -78,6 +92,40 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
+      <div className='flex items-center space-x-2 justify-end pt-10'>
+        <Button
+          variant='outline'
+          onClick={() => table.setPageIndex(0)}
+          disabled={!table.getCanPreviousPage()}
+        >
+          <span className='sr-only'>Go to first page</span>
+          <ChevronFirst />
+        </Button>
+        <Button
+          variant='outline'
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          <span className='sr-only'>Go to previous page</span>
+          <ChevronLeft />
+        </Button>
+        <Button
+          variant='outline'
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          <span className='sr-only'>Go to next page</span>
+          <ChevronRight />
+        </Button>
+        <Button
+          variant='outline'
+          onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+          disabled={!table.getCanNextPage()}
+        >
+          <span className='sr-only'>Go to last page</span>
+          <ChevronLastIcon />
+        </Button>
+      </div>
     </div>
   );
 }

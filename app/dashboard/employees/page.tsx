@@ -5,7 +5,7 @@ import { DataTable } from '@/components/ui/data-table';
 import { columns } from './columns';
 
 export default async function EmployeesPage() {
-  await setTimeout(5000);
+  await setTimeout(3000);
 
   return (
     <Card>
